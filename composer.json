@@ -1,0 +1,25 @@
+{
+    "name": "indexcoder/chuck-norris-jokes",
+    "description": "Create random Chuck Norris jokes.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "indexcoder",
+            "email": "programmer.kg@mail.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Indexcoder\\ChuckNorrisJokes\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Indexcoder\\ChuckNorrisJokes\\Tests\\": "tests"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
