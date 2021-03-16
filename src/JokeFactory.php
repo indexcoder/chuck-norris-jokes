@@ -5,23 +5,23 @@ namespace  Indexcoder\ChuckNorrisJokes;
 use GuzzleHttp\Client;
 
 // 1.0.1
-class JokeFactory {
-
+class JokeFactory
+{
     const API_ENDPOINT = 'http://api.icndb.com/jokes/random';
 
     protected $client;
 
-    public function __construct(Client $client = null) {
+    public function __construct(Client $client = null)
+    {
         $this->client = $client ?: new Client();
     }
 
-    public function getRandomJoke() {
-
+    public function getRandomJoke()
+    {
         $response = $this->client->get(self::API_ENDPOINT);
 
         $joke = json_decode($response->getBody()->getContents());
 
         return $joke->value->joke;
-
     }
 }

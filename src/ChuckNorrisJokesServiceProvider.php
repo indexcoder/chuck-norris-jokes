@@ -3,18 +3,17 @@
 namespace  Indexcoder\ChuckNorrisJokes;
 
 use Illuminate\Support\ServiceProvider;
-use Indexcoder\ChuckNorrisJokes\JokeFactory;
 
-class ChuckNorrisJokesServiceProvider extends ServiceProvider {
-
-    public function boot() {
-
+class ChuckNorrisJokesServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
     }
 
-    public function register() {
-        $this->app->bind('chuck-norris', function() {
+    public function register()
+    {
+        $this->app->bind('chuck-norris', function () {
             return new JokeFactory();
         });
     }
-
 }
