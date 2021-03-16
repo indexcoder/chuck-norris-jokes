@@ -11,4 +11,3 @@ class ChuckNorris extends Facade
         return 'chuck-norris';
     }
 }
-
