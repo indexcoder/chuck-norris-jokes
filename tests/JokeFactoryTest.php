@@ -2,8 +2,8 @@
 
 namespace Indexcoder\ChuckNorrisJokes\Tests;
 
-use Indexcoder\ChuckNorrisJokes\JokeFactory;
 use PHPUnit\Framework\TestCase;
+use Indexcoder\ChuckNorrisJokes\JokeFactory;
 
 class JokeFactoryTest extends TestCase
 {
