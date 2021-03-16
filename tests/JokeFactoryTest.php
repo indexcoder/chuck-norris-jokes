@@ -15,7 +15,7 @@ class JokeFactoryTest extends TestCase
     public function it_returns_a_random_joke()
     {
 
-        // Create a mock and queue two responses.
+        // Create test
         $mock = new MockHandler([
             new Response(200, [], '{ "type": "success", "value": { "id": 183, "joke": "Chuck Norris drinks napalm to quell his heartburn.", "categories": [] } }'),
         ]);
