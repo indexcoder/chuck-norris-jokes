@@ -1,6 +1,6 @@
 <?php
 
-namespace  Indexcoder\ChuckNorrisJokes;
+namespace  Indexcoder\ChuckNorrisJokes\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
