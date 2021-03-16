@@ -3,10 +3,10 @@
 namespace Indexcoder\ChuckNorrisJokes\Tests;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
+use GuzzleHttp\Handler\MockHandler;
 use Indexcoder\ChuckNorrisJokes\JokeFactory;
 
 class JokeFactoryTest extends TestCase
