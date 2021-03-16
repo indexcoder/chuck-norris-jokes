@@ -10,9 +10,5 @@ class ChuckNorris extends Facade
     {
         return 'chuck-norris';
     }
-<<<<<<< HEAD
 
 }
-=======
-}
->>>>>>> 19a246972d20ac18565318b3d57cb50f35160585
