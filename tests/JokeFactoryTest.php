@@ -2,36 +2,35 @@
 
 namespace Indexcoder\ChuckNorrisJokes\Tests;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use Indexcoder\ChuckNorrisJokes\JokeFactory;
 
 class JokeFactoryTest extends TestCase
 {
     /** @test */
-    public function it_returns_a_random_joke()
-    {
-        $jokes = new JokeFactory([
-            'This is a joke',
+    public function it_returns_a_random_joke() {
+
+        // Create a mock and queue two responses.
+        $mock = new MockHandler([
+            new Response(200, [], '{ "type": "success", "value": { "id": 183, "joke": "Chuck Norris drinks napalm to quell his heartburn.", "categories": [] } }')
         ]);
 
-        $joke = $jokes->getRandomJoke();
+        $handlerStack = HandlerStack::create($mock);
 
-        $this->assertSame('This is a joke', $joke);
-    }
+        $client = new Client(['handler' => $handlerStack]);
 
-    /** @test */
-    public function it_returns_a_predefined_joke()
-    {
-        $ChuckJokes = [
-            'Chuck Norris\' tears cure cancer. Too bad he has never cried',
-            'Chuck Norris counted to infinity... Twice.',
-            'Chuck Norris does not wear a condom. Because there is no such thing as protection from Chuck Norris.',
-        ];
 
-        $jokes = new JokeFactory();
+
+        $jokes = new JokeFactory($client);
 
         $joke = $jokes->getRandomJoke();
 
-        $this->assertContains($joke, $ChuckJokes);
+        $this->assertSame('Chuck Norris drinks napalm to quell his heartburn.', $joke);
     }
+
+
 }
