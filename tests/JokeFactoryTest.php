@@ -3,13 +3,17 @@
 namespace Indexcoder\ChuckNorrisJokes\Tests;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
+<<<<<<< HEAD
 <<<<<<< HEAD
 use PHPUnit\Framework\TestCase;
 use GuzzleHttp\Handler\MockHandler;
 =======
 >>>>>>> 9328e0b9206f6f0923c30e3153544b7ad6e3edc8
+=======
+>>>>>>> 19a246972d20ac18565318b3d57cb50f35160585
 use Indexcoder\ChuckNorrisJokes\JokeFactory;
 use PHPUnit\Framework\TestCase;
 
