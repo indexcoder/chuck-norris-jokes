@@ -11,7 +11,7 @@ class ChuckNorrisJokesServiceProvider extends ServiceProvider
     {
         if (app()->runningInConsole()) {
             $this->commands([
-                ChuckNorrisJoke::class
+                ChuckNorrisJoke::class,
             ]);
         }
     }
