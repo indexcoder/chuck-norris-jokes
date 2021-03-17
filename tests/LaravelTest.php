@@ -8,40 +8,41 @@ use Indexcoder\ChuckNorrisJokes\Console\ChuckNorrisJoke;
 use Indexcoder\ChuckNorrisJokes\Facades\ChuckNorris;
 use Orchestra\Testbench\TestCase;
 
-class LaravelTest extends TestCase {
-
+class LaravelTest extends TestCase
+{
     /**
      * Setup the test environment.
-    */
-    public function setUp() {
+     */
+    public function setUp()
+    {
         parent::setUp();
     }
 
-
-    protected function getPackageProviders($app) {
+    protected function getPackageProviders($app)
+    {
         return [
-            ChuckNorrisJokesServiceProvider::class
+            ChuckNorrisJokesServiceProvider::class,
         ];
     }
 
-    protected function getPackageAliases($app) {
+    protected function getPackageAliases($app)
+    {
         return [
-            'ChuckNorris' => ChuckNorrisJoke::class
+            'ChuckNorris' => ChuckNorrisJoke::class,
         ];
     }
 
     /** @test */
-    public function the_console_command_returns_a_joke() {
+    public function the_console_command_returns_a_joke()
+    {
         $this->artisan('chuck-norris');
 
         ChuckNorris::shouldReceive('getRandomJoke')
             ->once()
             ->andReturn('some joke');
 
-
         $output = Artisan::output();
 
-        $this->assertSame('some joke' . PHP_EOL, $output);
+        $this->assertSame('some joke'.PHP_EOL, $output);
     }
-
 }
