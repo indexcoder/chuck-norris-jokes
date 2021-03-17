@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Artisan;
 use Indexcoder\ChuckNorrisJokes\ChuckNorrisJokesServiceProvider;
 use Indexcoder\ChuckNorrisJokes\Console\ChuckNorrisJoke;
 use Indexcoder\ChuckNorrisJokes\Facades\ChuckNorris;
+use Indexcoder\ChuckNorrisJokes\Models\Joke;
 use Orchestra\Testbench\TestCase;
 
 class LaravelTest extends TestCase {
@@ -30,6 +31,12 @@ class LaravelTest extends TestCase {
         ];
     }
 
+    protected function getEnvironmentSetUp($app) {
+        include_once __DIR__ . '/../database/migrations/create_jokes_table.php.stub';
+
+        (new \CreateJokesTable)->up();
+    }
+
     /** @test */
     public function the_console_command_returns_a_joke() {
         $this->artisan('chuck-norris');
@@ -43,5 +50,32 @@ class LaravelTest extends TestCase {
 
         $this->assertSame('some joke' . PHP_EOL, $output);
     }
+
+
+    /** @test */
+    public function the_route_can_be_accessed() {
+        ChuckNorris::shouldReceive('getRandomJoke')
+            ->once()
+            ->andReturn('some joke');
+
+        $this->get('/chuck-norris')
+            ->assertViewIs('chuck-norris::joke')
+            ->assertViewHas('joke', 'some joke')
+            ->assertStatus(200);
+    }
+
+
+    /** @test */
+    public function it_can_access_the_database() {
+        $joke = new Joke();
+        $joke->joke = 'this is fanny';
+        $joke->save();
+
+        $newJoke = Joke::find($joke->id);
+
+        $this->assertSame($newJoke->joke, 'this is fanny');
+    }
+
+
 
 }
